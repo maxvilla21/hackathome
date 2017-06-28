@@ -65,9 +65,6 @@ namespace HackAtHomeClient
             }
             else
             {
-                //_imageViewEvidence.SetImageBitmap(
-                //    JsonConvert.DeserializeObject<Bitmap>(_data.EvidenceDetail.BitmapString));
-
                 FillData(_data.EvidenceDetail);
             }
             tvarticipant.Text = _data.ResultInfo.FullName;
@@ -81,20 +78,6 @@ namespace HackAtHomeClient
             var serviceClient = new ServiceClient();
             var evidenceDetail=await serviceClient.GetEvidenceByIDAsync(_data.ResultInfo.Token,_data.Evidence.EvidenceID);
             _data.EvidenceDetail = evidenceDetail;
-
-            Koush.UrlImageViewHelper.SetUrlDrawable(_imageViewEvidence, evidenceDetail.Url);
-          
-       
-            //_imageViewEvidence.BuildDrawingCache(true);
-            //Bitmap bitmap = _imageViewEvidence.GetDrawingCache(true);
-
-            //var cad = JsonConvert.SerializeObject(_imageViewEvidence.Drawable);
-
-
-            //var re = JsonConvert.DeserializeObject<Drawable>(cad);
-            //BitmapDrawable drawable = (BitmapDrawable)_imageViewEvidence.GetDrawable();
-            //Bitmap bitmap = drawable.GetBitmap();
-
             FillData(evidenceDetail);
         }
 
@@ -103,7 +86,8 @@ namespace HackAtHomeClient
             var description = $"<div style='color:#ecf0f1'>{evidenceDetail.Description}</div>";
             _webView.LoadDataWithBaseURL(null, description, "text/html", "uft-8", null);
             _webView.SetBackgroundColor(Color.Transparent);
-           
+            Koush.UrlImageViewHelper.SetUrlDrawable(_imageViewEvidence, evidenceDetail.Url);
+
         }
     }
 }
