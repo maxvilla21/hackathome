@@ -20,7 +20,7 @@ using Newtonsoft.Json;
 
 namespace HackAtHomeClient
 {
-    [Activity(Label = "@string/ApplicationName", Icon = "@drawable/CustomIcon", Theme = "@android:style/Theme.Black")]
+    [Activity(Label = "@string/ApplicationName", Icon = "@drawable/CustomIcon", Theme = "@android:style/Theme.Holo")]
     public class DetailItemActivity : Activity
     {
         private Complex _data;
